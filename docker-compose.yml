@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    restart: always
+    build:
+      dockerfile: dockerfile
+    container_name: db
+    volumes:
+      - /apps/mysql/mydir:/mydir
+      - /apps/mysql/datadir:/var/lib/mysql
+      # 数据库还原目录 可将需要还原的sql文件放在这里
+    environment:
+      - "MYSQL_ROOT_PASSWORD=140251"
+      - "MYSQL_DATABASE=user_db"
+    ports:
+      - 33306:3306
